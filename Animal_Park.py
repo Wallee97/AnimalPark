@@ -1,4 +1,5 @@
 from Class import Animal
+
 def menuChoice(nChoices):
 	#used to collect the inputs for menuchoices
 	while True:
@@ -143,12 +144,12 @@ Sort by:
 
 
 def printOverview(lsAnimals, searchParameter="name", ascending=False):
-	#prints all the animals in a userchosen order
+	#prints all the animals in the order chosen by the user
 	sortedList=sorted(lsAnimals, key=lambda animal: getattr(animal, searchParameter), reverse=ascending)
 	if searchParameter=="name" or searchParameter=="age":
 		for n in range(len(sortedList)):
 			animal=sortedList[n]
-			print("%s) %s (%s, %s y/o, %s)" % (n+1, animal.name, animal.species, animal.age, animal.gender))
+			print("%s) %s (%s, %s y, %s)" % (n+1, animal.name, animal.species, animal.age, animal.gender))
 	elif searchParameter=="gender" or searchParameter=="species":
 		lsCategories=[]
 		for animal in sortedList:
@@ -159,7 +160,7 @@ def printOverview(lsAnimals, searchParameter="name", ascending=False):
 """+str(category)+""": """)
 			for animal in sortedList:
 				if getattr(animal, searchParameter)==category:
-					print(animal.name)
+					print("%s (%s y)" %(animal.name, animal.age))
 
 def ascending(lsAnimals):
 	#choose which way you want to sort the list, in ascending or descending order
@@ -243,12 +244,6 @@ def recommendations(lsAnimals, maxCap, lsSpecies):
 		for item in tempList:
 			print(item)
 				
-
-
-
-	
-		
-
 
 def mainMenu(lsSpecies, lsAnimals, maxCap):
 	#main menu of the program
